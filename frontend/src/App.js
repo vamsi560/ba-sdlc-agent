@@ -1,10 +1,9 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { 
     UploadCloud, FileText, ListCollapse, Folder, Clock, Settings, CheckCircle, XCircle, 
     ChevronDown, ChevronUp, ChevronRight, Search, Send as SendIcon, Copy, AlertTriangle,
-    TrendingUp, Users, Activity, BarChart3, Target, Zap, Eye, Download,
-    Bell, User, Calendar, PieChart, ArrowRight, ArrowLeft, Menu, Plus, Link
+    Users, Activity, BarChart3, Target, Zap, Eye, Download,
+    Bell, User, Plus
 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import JSZip from 'jszip';
@@ -359,7 +358,7 @@ function MermaidDiagram({ code, id, showDownloadPng, showPngInline, title }) {
   };
 
   // Fetch PNG for inline display
-  const fetchPng = async () => {
+  const fetchPng = useCallback(async () => {
     setLoadingPng(true);
     setPngUrl(null);
     try {
@@ -380,7 +379,7 @@ function MermaidDiagram({ code, id, showDownloadPng, showPngInline, title }) {
       setPngUrl(null);
     }
     setLoadingPng(false);
-  };
+  }, [API_BASE_URL, code]);
 
   useEffect(() => {
     if (showPngInline && code) {
@@ -389,7 +388,7 @@ function MermaidDiagram({ code, id, showDownloadPng, showPngInline, title }) {
     return () => {
       if (pngUrl) window.URL.revokeObjectURL(pngUrl);
     };
-  }, [showPngInline, code]);
+  }, [showPngInline, code, fetchPng, pngUrl]);
 
   if (error && fallbackMode) {
     return (
