@@ -1,0 +1,67 @@
+# BA Agent Environment Variables Template
+# Copy this file to .env and fill in your actual values
+
+# Backend Environment Variables
+GEMINI_API_KEY=your_gemini_api_key_here
+ACS_CONNECTION_STRING=your_azure_communication_services_connection_string
+ACS_SENDER_ADDRESS=your_sender_email@example.com
+APPROVAL_RECIPIENT_EMAIL=approver@example.com
+
+# Database Configuration
+DATABASE_URL=postgresql://username:password@host:port/database_name
+
+# Qdrant Vector Database
+QDRANT_HOST=localhost
+QDRANT_PORT=6333
+QDRANT_ENABLED=true
+
+# Frontend Environment Variables
+REACT_APP_API_URL=https://your-backend-url.vercel.app
+
+# Azure DevOps Integration
+ADO_PERSONAL_ACCESS_TOKEN=your_azure_devops_pat_here
+ADO_ORGANIZATION_URL=https://dev.azure.com/your-organization/
+ADO_PROJECT_NAME=your-project-name
+
+# ============================================================================
+# ENHANCED FEATURES CONFIGURATION
+# ============================================================================
+
+# LangChain Configuration (Optional)
+LANGCHAIN_ENABLED=true
+OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_MODEL=gpt-4
+
+# OneDrive Configuration (Optional)
+ONEDRIVE_ENABLED=false
+ONEDRIVE_CLIENT_ID=your_client_id_here
+ONEDRIVE_CLIENT_SECRET=your_client_secret_here
+ONEDRIVE_TENANT_ID=your_tenant_id_here
+ONEDRIVE_REDIRECT_URI=http://localhost:5000/api/onedrive/callback
+ONEDRIVE_SCOPE=https://graph.microsoft.com/.default
+
+# Performance Configuration
+MAX_CONCURRENT_REQUESTS=10
+REQUEST_TIMEOUT=120
+CHUNK_SIZE=1000
+CHUNK_OVERLAP=200
+
+# Security Configuration
+JWT_SECRET_KEY=your-secret-key-change-in-production
+JWT_ALGORITHM=HS256
+JWT_EXPIRATION_HOURS=24
+
+# Rate Limiting
+RATE_LIMIT_ENABLED=true
+RATE_LIMIT_REQUESTS=100
+RATE_LIMIT_WINDOW=60
+
+# Environment Configuration
+ENVIRONMENT=development
+DEBUG=true
+
+# Optional: Disable features for development
+# QDRANT_ENABLED=false
+# EMAIL_ENABLED=false
+# LANGCHAIN_ENABLED=false
+# ONEDRIVE_ENABLED=false 
